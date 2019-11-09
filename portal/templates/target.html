@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="section">
+    <div class="container">
+    <h1 class="title">Targets</h1>
+    <h2 class="subtitle">{{ res }}</h2>
+    </div>
+</section>
+
+{% for item in res %}
+<section class="section">
+<nav class="level">    
+    <div class="level-item has-text-centered">
+        <div>
+        <p class="heading">Target Set</p>
+        <p class="title"><a href="{{ url_for('target.targetset_detail', key=item['id']) }}">{{ item['id'] }}</a></p>
+        </div>
+    </div>
+    <div class="level-item has-text-centered">
+        <div>
+        <p class="heading">Name</p>
+        <p class="title">{{ item['name'] }}</p>
+        </div>
+    </div>
+    <div class="level-item has-text-centered">
+        <div>
+        <p class="heading">Target Count</p>
+        <p class="title">{{ item['count'] }}</p>
+        </div>
+    </div>
+</nav>    
+</section>
+{% endfor %}
+
+{% endblock %}
+

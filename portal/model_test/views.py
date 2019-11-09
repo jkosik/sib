@@ -1,19 +1,18 @@
 from flask import Blueprint, render_template, request
-from portal.query.models import CHECKS 
+from portal.model_test.models import CHECKS 
 from werkzeug import abort 
 
-query = Blueprint('query', __name__) 
+model_test = Blueprint('model_test', __name__) 
 
-@query.route("/request")
+@model_test.route("/model_test/request")
 def req():
-    req = request.args.get('req', 'default')
-    return render_template('request.html', req=req)
+    return render_template('request.html')
 
-@query.route('/response')  
+@model_test.route('/model_test/response')  
 def res(): 
     return render_template('response.html', res=CHECKS)
  
-@query.route('/response/<key>') 
+@model_test.route('/model_test/response/<key>') 
 def get_check(key):
     check = CHECKS.get(key) # CHECKS[key] will fail here when key does not exist
     print(f'Check value is {key}')
@@ -22,7 +21,3 @@ def get_check(key):
     else: 
         return render_template('response.html', check=check)        
  
-#@query.route('/add/<key>/<type>') 
-#def get_type(key, type): 
-    #CHECKS[key] = message #update in-memory data
-#    return CHECKS[key]

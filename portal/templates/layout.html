@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">     
+<link rel="stylesheet" href="{{ url_for('static', filename='css/local.css') }}">
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+
+    <div class="tabs is-medium">
+            <ul>
+                {% if request.endpoint == "main.about" %}
+                <li class="is-active">
+                {% else %}
+                <li>
+                {% endif %}
+                <a href="{{url_for('main.about')}}">
+                    <span class="icon is-small"><i class="fas fa-home" aria-hidden="true"></i></span>
+                    <span>About</span>
+                </a>
+                </li>
+                {% if request.endpoint == "main.docs" %}
+                <li class="is-active">
+                {% else %}
+                <li>
+                {% endif %}
+                <a href="{{url_for('main.docs')}}">
+                    <span class="icon is-small"><i class="fas fa-info-circle" aria-hidden="true"></i></span>
+                    <span>Docs</span>
+                </a>
+                </li>
+                {% if request.endpoint == "query.req" %}
+                <li class="is-active">
+                {% else %}
+                <li>
+                {% endif %}
+                <a href="{{url_for('query.req')}}">
+                    <span class="icon is-small"><i class="fas fa-search" aria-hidden="true"></i></span>
+                    <span>Request</span>
+                </a>
+                </li>
+                {% if request.endpoint == "assets.assets" %}
+                <li class="is-active">
+                {% else %}
+                <li>
+                {% endif %}
+                <a href="{{url_for('asset.asset_list')}}">
+                    <span class="icon is-small"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
+                    <span>Assets</span>
+                </a>
+                </li>
+
+            </ul>
+            </div>    
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+
+
+
+
+</html>

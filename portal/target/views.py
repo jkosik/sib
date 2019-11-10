@@ -11,7 +11,7 @@ def targetset_list():
     targetsets = TargetSet.query.all()
     # summarize occurrences of targetset_id in Target table and format to json to enrich res output. Aka merging TargetSet and Target
     count = Target.query.with_entities(Target.targetset_id, func.count(Target.targetset_id)).group_by(Target.targetset_id).all() # outputs [(1,3),(2.7)]
-    print(count)
+    print('counts: ', count)
     count_jsonlist = []
     for item in count:
         json_element = {
@@ -39,8 +39,8 @@ def targetset_list():
 @target.route('/target/<key>') 
 def targetset_detail(key):
     targets = Target.query.filter_by(targetset_id = key).all()
-    
-    print(targets)
+
+    print(f'Targets in TS {key}: {targets}')
     
 #    check = CHECKS.get(key) # CHECKS[key] will fail here when key does not exist
 #    print(f'Check value is {key}')

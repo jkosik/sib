@@ -10,7 +10,11 @@ class TargetSet(db.Model):
         self.name = name 
  
     def __repr__(self): 
-        return '<Target Sets %d>'.format(self.id)
+        #return '<Target Sets %d>'.format(self.id)
+        return f'{self.name}'
+     
+    def __str__(self):
+        return f'{self.name}'    
 
 
 class Target(db.Model): 
@@ -24,4 +28,8 @@ class Target(db.Model):
         self.targetset_id = targetset_id 
  
     def __repr__(self): 
-        return '<Targets %d>'.format(self.id)
+        #return '<Targets %d>'.format(self.id)
+        return f'{self.targetset_id}: {self.target}'
+
+    def __str__(self):
+        return f'{self.target}'

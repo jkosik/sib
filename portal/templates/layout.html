@@ -37,12 +37,12 @@
                 {% else %}
                 <li>
                 {% endif %}
-                <a href="{{url_for('model_test.req')}}">
+                <a href="{{url_for('query.req')}}">
                     <span class="icon is-small"><i class="fas fa-search" aria-hidden="true"></i></span>
-                    <span>Request</span>
+                    <span>Query</span>
                 </a>
                 </li>
-                {% if request.endpoint == "target.target_list" %}
+                {% if request.endpoint == "target.targetset_list" %}
                 <li class="is-active">
                 {% else %}
                 <li>

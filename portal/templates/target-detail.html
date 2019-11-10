@@ -3,8 +3,8 @@
 
 <section class="section">
     <div class="container">
-    <h1 class="title">Targets</h1>
-    <h2 class="subtitle">{{ res }}</h2>
+    <h1 class="title">Target Set: {{ ts }}</h1>
+    <h2 class="subtitle">Contains the following Targets:</h2>
     </div>
 </section>
 
@@ -12,7 +12,7 @@
 <section class="container">
     <div class="tags has-addons">
 {% for item in targets %}  
-    <span class="tag is-danger">{{ item }}</span>
+    <span class="tag is-danger">{{ item.target }}</span>
     <a class="tag is-delete"></a>
     &nbsp;&nbsp;&nbsp;&nbsp;
 {% endfor %}

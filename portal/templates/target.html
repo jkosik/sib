@@ -8,8 +8,9 @@
     </div>
 </section>
 
-{% for item in res %}
 <section class="section">
+{% for item in res %}
+
 <nav class="level">    
     <div class="level-item has-text-centered">
         <div>
@@ -30,8 +31,24 @@
         </div>
     </div>
 </nav>    
-</section>
+
 {% endfor %}
+</section>
+
+
+<section class="container">
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+    <a class="pagination-next">Next page</a>
+    <ul class="pagination-list">
+
+      <li>
+        <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+      </li>
+
+    </ul>
+  </nav>
+</section>
 
 {% endblock %}
 

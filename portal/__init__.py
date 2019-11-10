@@ -12,12 +12,12 @@ def create_app():
     with app.app_context():
       db.init_app(app) 
       from portal.main.routes import main
-      from portal.model_test.views import model_test
+      from portal.query.views import query
       from portal.target.views import target
       db.create_all()
 
       app.register_blueprint(main)
-      app.register_blueprint(model_test)
+      app.register_blueprint(query)
       app.register_blueprint(target)
 
     return app 

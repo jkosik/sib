@@ -1,13 +1,13 @@
 from portal import db
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, flash
 from portal.database.models import TargetSet, Target
-from werkzeug import abort 
 from sqlalchemy import func
 
 target = Blueprint('target', __name__) 
 
 @target.route('/target/list')
 def targetset_list():
+    flash('Click TS for detail', 'success')
     # main query
     targetsets = TargetSet.query.all()
     

@@ -7,7 +7,7 @@ target = Blueprint('target', __name__)
 
 @target.route('/target/list')
 def targetset_list():
-    flash('Click TS for detail', 'success')
+    flash('List of existing Target Sets', 'success')
     # main query
     targetsets = TargetSet.query.all()
     

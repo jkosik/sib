@@ -6,9 +6,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">     
 <link rel="stylesheet" href="{{ url_for('static', filename='css/local.css') }}">
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script src="{{ url_for('static', filename='js/bulma-toast.min.js') }}"></script> 
 </head>
 
 <body>
+
+<!-- JAVASCRIPT -->
+    <script>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            bulmaToast.toast({ message: "{{ message }}", type: "is-info", position: "top-center", opacity: 0.8 });
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </script>
+
+<!-- HTML -->
 
     <div class="tabs is-medium">
             <ul>

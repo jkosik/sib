@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="section">
+    <div class="container">
+    <h1 class="title">Admin</h1>
+    <h2 class="subtitle">
+        Add Target Set and Target
+    </h2>
+    </div>
+</section>
+
+<div class="top-pad"> 
+    <form method="POST" action="{{ 
+       url_for('admin.add_targetset') }}" role="form"> 
+      <div class="form-group">{{ form.name.label }}: {{ 
+         form.name() }}</div> 
+      <button type="submit" class="btn btn-
+         default">Submit</button> 
+    </form> 
+  </div> 
+
+
+{% endblock %}

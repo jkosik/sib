@@ -1,4 +1,6 @@
 from portal import db
+from flask_wtf import FlaskForm 
+from wtforms import StringField, DecimalField, SelectField 
 
 class TargetSet(db.Model): 
     __tablename__ = 'targetset'
@@ -16,7 +18,6 @@ class TargetSet(db.Model):
     def __str__(self):
         return f'{self.name}'    
 
-
 class Target(db.Model): 
     __tablename__ = 'target'
     id = db.Column(db.Integer, primary_key=True) 
@@ -33,3 +34,7 @@ class Target(db.Model):
 
     def __str__(self):
         return f'{self.target}'
+ 
+class TargetSetForm(FlaskForm): 
+    name = StringField('Name') 
+

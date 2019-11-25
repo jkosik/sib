@@ -16,7 +16,7 @@
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            bulmaToast.toast({ message: "{{ message }}", type: "is-info", position: "top-center", opacity: 0.8 });
+            bulmaToast.toast({ message: "{{ message }}", type: "is-info", opacity: 0.8 });
             {% endfor %}
         {% endif %}
       {% endwith %}

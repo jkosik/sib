@@ -45,33 +45,10 @@ def targetset_list():
     '''
 
 
-@target.route('/target/<key>') 
+@target.route('/target/<key>', methods=['GET', 'POST']) 
 def targetset_detail(key):
     targets = Target.query.filter_by(targetset_id = key).all()
     print(f'Targets in TS {key}: {targets}')
     return render_template('target-detail.html', targets=targets, ts=key)
-
-@target.route('/target/add-target-set', methods=['POST']) 
-def targetset_add(): 
-    name = request.form.get('name') 
-    data = TargetSet(name) 
-    db.session.add(data) 
-    db.session.commit() 
-    return 'Target Set added.' 
-
-@target.route('/target/add-target', methods=['POST']) 
-def target_add(): 
-    target = request.form.get('target') 
-    targetset_id = request.form.get('targetset_id')
-    data = Target(target, targetset_id) 
-    db.session.add(data) 
-    db.session.commit() 
-    return 'Target added.' 
-
-
-#python3
-#import requests
-#requests.post('http://127.0.0.1:5000/target/add-target-set', data={'name':'aaa'})
-#requests.post('http://127.0.0.1:5000/target/add-target', data={'target':'1.1.1.1', 'targetset_id': '1'}) 
 
 

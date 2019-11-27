@@ -1,6 +1,7 @@
 from portal import db
 from flask_wtf import FlaskForm 
-from wtforms import StringField, DecimalField, SelectField 
+from wtforms import StringField, DecimalField 
+from wtforms.ext.sqlalchemy.fields import QuerySelectField 
 
 class TargetSet(db.Model): 
     __tablename__ = 'targetset'
@@ -36,5 +37,13 @@ class Target(db.Model):
         return f'{self.target}'
  
 class TargetSetForm(FlaskForm): 
+    id = StringField('Id') 
     name = StringField('Name') 
 
+def target_query():
+    return TargetSet.query.all()
+
+class TargetForm(FlaskForm): 
+    target = StringField('Target') 
+    targetset = QuerySelectField(query_factory=target_query, allow_blank=True) 
+    

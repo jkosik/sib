@@ -2,6 +2,7 @@ from portal import db
 from flask_wtf import FlaskForm 
 from wtforms import StringField, DecimalField 
 from wtforms.ext.sqlalchemy.fields import QuerySelectField 
+from wtforms.validators import InputRequired, NumberRange 
 
 class TargetSet(db.Model): 
     __tablename__ = 'targetset'
@@ -37,13 +38,13 @@ class Target(db.Model):
         return f'{self.target}'
  
 class TargetSetForm(FlaskForm): 
-    id = StringField('Id') 
-    name = StringField('Name') 
+    id = StringField('Id') #validator ensures HTML popup on form field when condition not met
+    name = StringField('Name', validators=[InputRequired()]) 
 
 def target_query():
     return TargetSet.query.all()
 
 class TargetForm(FlaskForm): 
-    target = StringField('Target') 
-    targetset = QuerySelectField(query_factory=target_query, allow_blank=True) 
+    target = StringField('Target', validators=[InputRequired()]) 
+    targetset = QuerySelectField(query_factory=target_query, validators=[InputRequired()]) #dumps the whole TargetSet table. Refer to individual files as admin/views.py: "targetset_id = form2.targetset.data.id"
     

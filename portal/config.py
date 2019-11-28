@@ -7,6 +7,7 @@ class BaseConfig(object):
     TESTING = False 
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'sib.db')
     SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/sib.db' 
+    WTF_CSRF_SECRET_KEY = '123456'
 
 class ProductionConfig(BaseConfig): 
     DEBUG = False 

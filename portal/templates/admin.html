@@ -12,6 +12,7 @@
 
 <section class="container">
 <form method="POST" action="{{ url_for('admin.add') }}" role="form"> 
+    {{ form.csrf_token }} 
     <div class="field">
         <label class="label">New Target Set</label>
         <div class="control">
@@ -32,20 +33,35 @@
 
 <section class="container">
     <form method="POST" action="{{ url_for('admin.add') }}" role="form2"> 
-        <div class="field">
-            <label class="label">New Target</label>
-            <div class="control">
-                {{ form2.target(placeholder="Target",class="input is-hovered") }}
-                {{ form2.targetset(placeholder="Available",class="select") }}
+        {{ form.csrf_token }} 
+        <div class="field has-addons">
+            <div class="columns">
+                <div class="column is-half">
+                    <label class="label">New Target</label>
+                    <div class="control">
+                        {{ form2.target(placeholder="Target",class="input is-hovered") }}
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <label class="label">for Target Set</label>
+                    <div class="control">
+                            
+                            {{ form2.targetset(class="select") }}
+                    </div>
+                </div>
             </div>
-        </div>    
-    
+        </div>
+
         <div class="field is-grouped">
             <div class="control">
                 <button class="button is-info">Add Target</button>
             </div>
         </div>
     </form>
+
+
+
+
     </section>
 
 {% endblock %}
